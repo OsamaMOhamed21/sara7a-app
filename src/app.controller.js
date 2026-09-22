@@ -15,7 +15,7 @@ const bootstrap = async () => {
   app.use("/user", userController);
   app.get("/", (req, res, next) => res.json({ message: "Done" }));
   app.get("{/*dummy}", (req, res, next) =>
-    res.status(404).json({ message: "In-valid routing" }),
+    res.status(404).json({ message: "In-valid Routing" }),
   );
   app.listen(port, 201, () => console.log(`server is running in ${port}`));
 };
