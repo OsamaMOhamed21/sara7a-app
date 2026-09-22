@@ -17,6 +17,6 @@ const bootstrap = async () => {
   app.get("{/*dummy}", (req, res, next) =>
     res.status(404).json({ message: "In-valid Routing" }),
   );
-  app.listen(port, 201, () => console.log(`server is running in ${port}`));
+  app.listen(port, 201, () => console.log(`Server is running in ${port}`));
 };
 export default bootstrap;
