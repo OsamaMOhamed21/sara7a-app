@@ -1,0 +1,22 @@
+import express from "express";
+import authController from "./modules/auth/auth.controller.js";
+import userController from "./modules/user/user.controller.js";
+import connectionDB from "./DB/connection.db.js";
+const bootstrap = async () => {
+  const app = express();
+  const port = 3000;
+
+  //DB
+  await connectionDB();
+  // Convert buffer Data
+  app.use(express.json());
+  // app routing
+  app.use("/auth", authController);
+  app.use("/user", userController);
+  app.get("/", (req, res, next) => res.json({ message: "Done" }));
+  app.get("{/*dummy}", (req, res, next) =>
+    res.status(404).json({ message: "In-valid routing" }),
+  );
+  app.listen(port, 201, () => console.log(`server is running in ${port}`));
+};
+export default bootstrap;
